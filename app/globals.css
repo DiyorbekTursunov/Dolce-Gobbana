@@ -70,7 +70,18 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+a:hover,
+button:hover {
+  opacity: .6;
+}
+
+a:active,
+button:active {
+  opacity: .5;
 }

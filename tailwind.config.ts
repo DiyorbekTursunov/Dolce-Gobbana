@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -19,6 +19,16 @@ const config = {
     },
     extend: {
       colors: {
+        light_gray: "#E9E9E9",
+        dark_black: "#1A1A1A",
+
+        buttons_black: "#191919",
+        text_black: "#323232",
+
+        inputs_light_gray: "#F2F2F2",
+        text_light_gray: "#C2C2C2",
+
+        // shadCN ui
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
