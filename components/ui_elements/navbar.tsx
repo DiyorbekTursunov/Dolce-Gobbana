@@ -1,4 +1,5 @@
-//
+//components
+import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 //images
@@ -7,8 +8,6 @@ import search_icon from '../images/svg/icons/search.svg'
 import like_icon from '../images/svg/icons/like.svg'
 import bag_icon from '../images/svg/icons/store_bag.svg'
 import menu_icon from '../images/svg/icons/menu.svg'
-//components
-import { Button } from "../ui/button";
 
 export default function Navbar() {
   return (
