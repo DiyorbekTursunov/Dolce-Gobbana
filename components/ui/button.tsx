@@ -18,6 +18,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        selected: "bg-[#000] text-[#fff] w-full h-full px-[40px] py-[10px]  rounded-[33px]",
+        unSelected: "text-[#000] w-full h-full px-[40px] py-[10px] rounded-[33px]",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -26,13 +28,13 @@ const buttonVariants = cva(
         icon: "h-10 w-10",
         none: "p-0 w-10",
       },
-      animations:{
-        default:"transition-all"
+      animations: {
+        default: "transition-all"
       }
     },
     defaultVariants: {
-      variant: "default",
-      animations:"default",
+
+      animations: "default",
     },
   }
 )

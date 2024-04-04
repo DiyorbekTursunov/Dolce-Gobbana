@@ -76,6 +76,12 @@
   }
 }
 
+/* @layer utilities {
+  .border-gradient {
+    border-image-source: 
+  }
+} */
+
 a:hover,
 button:hover {
   opacity: .6;
