@@ -11,7 +11,7 @@ interface purchaseTitleProps {
     ticket_count: number,
 }
 
-export default function PurchaseCard({ purchase_title, original_price, ticket_count}: purchaseTitleProps) {
+export default function uPurchaseCard({ purchase_title, original_price, ticket_count}: purchaseTitleProps) {
     return (
         <div className="border-[1px] border-[#0000001A] rounded-[6px] px-6 py-[20px] w-[379px] max-sm:w-full">
             <h2 className="text-[24px] font-semibold mb-6">VIP Pass</h2>

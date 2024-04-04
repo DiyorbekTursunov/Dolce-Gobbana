@@ -76,11 +76,18 @@
   }
 }
 
-/* @layer utilities {
-  .border-gradient {
-    border-image-source: 
+@layer utilities {
+  .footer-bg {
+    background-image: url(../components/images/footer_bg.png); 
   }
-} */
+  .footertext-icon::after {
+    background-image: url(../components/images/svg/icons/footer_text_icon.png); 
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+}
 
 a:hover,
 button:hover {

@@ -14,6 +14,7 @@ type GetTicketBodyProps = {
 }
 
 export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
+    //this function depending on the clicked button type return was suitable value
     function TicketData() {
         switch (SelectedButton) {
             case "VIP Pass":
@@ -29,10 +30,24 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
         }
     }
 
-    const { name, image, discounted_price, original_price, discount, description, ticket_count, Benefits, purchase_title, startup_pass_description_and, startup_pass_description, isFree }: any = TicketData()
+    /* Ticket Values */
+    const { name,
+        image,
+        discounted_price,
+        original_price,
+        discount,
+        description,
+        ticket_count,
+        Benefits,
+        purchase_title,
+        startup_pass_description_and,
+        startup_pass_description,
+        isFree
+    }: any = TicketData()
 
     return (
         <section className="mb-[77px]">
+            {/*Section Header start */}
             <header className="flex md:flex-row sm:flex-col max-sm:flex-col  gap-12 mb-[40px]">
                 <div className="flex justify-evenly">
                     <Image src={image} alt="Ticket image" className="max-w-[260px] h-[378.06px]" />
@@ -110,6 +125,9 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                     {startup_pass_description_and && <p className="mt-4">startup_pass_description_and</p>}
                 </main>
             </header>
+            {/*Section Header and */}
+
+            {/*Section Footer start */}
             <footer className="flex md:flex-row sm:flex-col max-sm:flex-col md:gap-0 sm:gap-6 max-sm:gap-6  justify-between">
                 <div>
                     <h2 className="font-semibold text-[24px] mb-4">Benefits:</h2>
@@ -123,6 +141,7 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                 </div>
                 <PurchaseCard purchase_title={purchase_title} original_price={original_price} ticket_count={ticket_count} />
             </footer>
+            {/*Section Footer and */}
         </section>
     )
 }
