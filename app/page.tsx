@@ -1,32 +1,16 @@
 "use client"
-
-import SelectCategoryBtn from "@/components/ui_elements/select_catigory_btn";
-import { selectCategoryBtnType } from "@/types/types";
+//hooks
 import { useState } from "react";
+//types
+import { selectCategoryBtnType } from "@/types/types";
+//static data
+import { selectedCatigoryData } from "@/helpers/data/selected_catigory";
+//components
+import SelectCategoryBtn from "@/components/ui_elements/select_catigory_btn";
+import GetTicketBody from "@/components/ui_elements/get_ticket_body";
 
 export default function Home() {
-  const [selectCategoryBtnValue, setSelectCategoryBtnValue] = useState<selectCategoryBtnType[]>([
-    {
-      id: 1,
-      isSelected: true,
-      title: 'VIP Pass'
-    },
-    {
-      id: 2,
-      isSelected: false,
-      title: 'General Attendees'
-    },
-    {
-      id: 3,
-      isSelected: false,
-      title: 'Startup Pass'
-    },
-    {
-      id: 4,
-      isSelected: false,
-      title: 'Press Pass'
-    },
-  ])
+  const [selectCategoryBtnValue, setSelectCategoryBtnValue] = useState<selectCategoryBtnType[]>(selectedCatigoryData)
 
   const [SelectedButton, setSelectedButton] = useState<string>("VIP Pass")
 
@@ -45,9 +29,9 @@ export default function Home() {
   }
 
   return (
-    <main className="max-w-[1240px] mx-auto mt-[42px]">
+    <main className="max-w-[1240px] mx-auto mt-[42px] px-3 max-sm:px-6">
       <h1 className="sm:text-[32px] max-sm:text-[24px] font-semibold mb-[30px] uppercase">Choose Your Pass for Netevia conference 2024</h1>
-      <section>
+      <section className="mb-[53px]">
         <div className="flex flex-wrap gap-4">
           {/* This is code mapped all button  */}
           {selectCategoryBtnValue.map((values: selectCategoryBtnType) =>
@@ -59,11 +43,7 @@ export default function Home() {
             </SelectCategoryBtn>)}
         </div>
       </section>
-      <section>
-        <div>
-          
-        </div>
-      </section>
+      <GetTicketBody />
     </main>
   );
 }

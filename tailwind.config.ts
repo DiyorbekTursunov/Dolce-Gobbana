@@ -28,6 +28,9 @@ const config = {
         inputs_light_gray: "#F2F2F2",
         text_light_gray: "#C2C2C2",
 
+        light_red: '#FF33331A',
+        default_red: '#FF3333',
+
         // shadCN ui
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
