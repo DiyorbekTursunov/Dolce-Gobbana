@@ -1,33 +1,61 @@
+"use client"
+
 //components
 import Image from "next/image";
 import { Button } from "../ui/button";
 //images
-import ticket_1 from '../images/tickets/ticket_1.png'
 import plus_icon from '../images/svg/icons/icon_plus.svg'
 import minus_icon from '../images/svg/icons/icon_minus.svg'
 import PurchaseCard from "./purchase_card";
+import { ticket_data_general_attendees, ticket_data_press_pass, ticket_data_startup_pass, ticket_data_vip_pass } from "@/helpers/data/tickets_data";
 
-export default function GetTicketBody() {
+type GetTicketBodyProps = {
+    SelectedButton: string;
+}
+
+export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
+    function TicketData() {
+        switch (SelectedButton) {
+            case "VIP Pass":
+                return ticket_data_vip_pass
+            case "General Attendees":
+                return ticket_data_general_attendees
+            case "Startup Pass":
+                return ticket_data_startup_pass
+            case "Press Pass":
+                return ticket_data_press_pass
+            default:
+                ticket_data_vip_pass;
+        }
+    }
+
+    const { name, image, discounted_price, original_price, discount, description, ticket_count, Benefits, purchase_title, startup_pass_description_and, startup_pass_description, isFree }: any = TicketData()
+
     return (
         <section className="mb-[77px]">
             <header className="flex md:flex-row sm:flex-col max-sm:flex-col  gap-12 mb-[40px]">
                 <div className="flex justify-evenly">
-                    <Image src={ticket_1} alt="Ticket image" className="max-w-[260px] h-[378.06px]" />
+                    <Image src={image} alt="Ticket image" className="max-w-[260px] h-[378.06px]" />
                     <div className="md:hidden sm:block max-sm:hidden">
-                        <h2 className="text-[32px] font-semibold mb-4">VIP Pass</h2>
-                        <div className="flex gap-4 text-[32px] items-center font-semibold mb-4">
-                            <span>$299</span>
-                            <del className="text-[#0000004D]">$499</del>
-                            <span className="bg-light_red text-default_red text-[16px] py-[6px] px-[14px] rounded-[62px]">
-                                -50%
+                        <h2 className="text-[32px] font-semibold mb-4">{name}</h2>
+                        {isFree && isFree ?
+                            <span className="text-[32px] items-center font-semibold">
+                                ${original_price}
                             </span>
-                        </div>
-                        <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4">
-                            <Button variant={"outline"}>
+                            :
+                            <div className="flex gap-4 text-[32px] items-center font-semibold">
+                                <span>${original_price}</span>
+                                <del className="text-[#0000004D]">${discounted_price}</del>
+                                <span className="bg-light_red text-default_red text-[16px] py-[6px] px-[14px] rounded-[62px]">
+                                    {discount}
+                                </span>
+                            </div>}
+                        <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4 mt-4">
+                            <Button variant={"link"}>
                                 <Image src={plus_icon} alt="plus icon" />
                             </Button>
-                            <span>1</span>
-                            <Button variant={"outline"}>
+                            <span>{ticket_count}</span>
+                            <Button variant={"link"}>
                                 <Image src={minus_icon} alt="minus icon" />
                             </Button>
                         </div>
@@ -35,28 +63,38 @@ export default function GetTicketBody() {
                 </div>
                 <main className="max-w-[775px] ">
                     <div className="md:block sm:hidden">
-                        <h2 className="text-[32px] font-semibold mb-4">VIP Pass</h2>
-                        <div className="flex gap-4 text-[32px] items-center font-semibold mb-4">
-                            <span>$299</span>
-                            <del className="text-[#0000004D]">$499</del>
-                            <span className="bg-light_red text-default_red text-[16px] py-[6px] px-[14px] rounded-[62px]">
-                                -50%
+                        <h2 className="text-[32px] font-semibold mb-4">{name}</h2>
+                        {isFree && isFree ?
+                            <span className="text-[32px] items-center font-semibold ">
+                                ${original_price}
                             </span>
-                        </div>
-                        <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] sm:gap-[38px] w-[170px] max-sm:w-full max-sm:justify-center mb-4 max-sm:mx-auto rounded-[6px]">
+                            :
+                            <div className="flex gap-4 text-[32px] items-center font-semibold">
+                                <span>${original_price}</span>
+                                <del className="text-[#0000004D]">${discounted_price}</del>
+                                <span className="bg-light_red text-default_red text-[16px] py-[6px] px-[14px] rounded-[62px]">
+                                    {discount}
+                                </span>
+                            </div>}
+                        <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4 mt-4">
                             <Button variant={"link"}>
                                 <Image src={plus_icon} alt="plus icon" />
                             </Button>
-                            <span>1</span>
+                            <span>{ticket_count}</span>
                             <Button variant={"link"}>
                                 <Image src={minus_icon} alt="minus icon" />
                             </Button>
                         </div>
                     </div>
-                    <p className="mb-4">
-                        Reserve your spot now and enjoy a $200 discount until February 1, 2024, before our rates go up. Prepare to engage with leading figures and emerging innovators from the worlds of Payments, Banking, FinTech, Retail, Technology, Startups, Financial Services, Policy, and beyond.
-                        This is the premier hub for financial industry professionals to converge and conduct business.
-                    </p>
+                    <p className="mb-4">{description}</p>
+
+                    {startup_pass_description && <ul className="list-disc list-outside pl-6 flex flex-col gap-2 mb-4">
+                        {startup_pass_description.map((value: any) => (
+                            <li key={value.id}>
+                                <span>{value.title}</span>
+                            </li>
+                        ))}
+                    </ul>}
                     <div className="bg-[#EFF6FF] py-[16px] px-[28px] rounded-[6px]">
                         <p className="flex md:flex-row md:justify-center sm:flex-col max-sm:flex-col sm:items-center max-sm:items-center gap-[6px] font-medium">
                             To secure your pass, simply click on
@@ -69,44 +107,21 @@ export default function GetTicketBody() {
                             below and proceed with your purchase.
                         </p>
                     </div>
+                    {startup_pass_description_and && <p className="mt-4">startup_pass_description_and</p>}
                 </main>
             </header>
             <footer className="flex md:flex-row sm:flex-col max-sm:flex-col md:gap-0 sm:gap-6 max-sm:gap-6  justify-between">
                 <div>
                     <h2 className="font-semibold text-[24px] mb-4">Benefits:</h2>
                     <ul className="list-disc list-outside pl-6 flex flex-col gap-2">
-                        <li>
-                            <span>Exclusive VIP Access to the Event</span></li>
-                        <li>
-                            <span>Gathering of Numerous Influential Figures in the Financial Sector</span>
-                        </li>
-                        <li>
-                            <span>Knowledge Sharing from Over 50 Industry Experts</span>
-                        </li>
-                        <li>
-                            <span>Opportunities to Connect with Banks, FinTech Companies, Startups, Investors, and Retailers</span>
-                        </li>
-                        <li>
-                            <span>Entry to Exceptional Networking Functions</span>
-                        </li>
-                        <li>
-                            <span>Use of a Dedicated Matchmaking Networking Application</span>
-                        </li>
-                        <li>
-                            <span>Customizable Personal Agenda Tool</span>
-                        </li>
-                        <li>
-                            <span>Comprehensive Directory of Participants</span>
-                        </li>
-                        <li>
-                            <span>In-App Messaging Feature</span>
-                        </li>
-                        <li>
-                            <span>Complimentary Refreshments and Catering</span>
-                        </li>
+                        {Benefits.map((value: any) => (
+                            <li key={value.id}>
+                                <span>{value.title}</span>
+                            </li>
+                        ))}
                     </ul>
                 </div>
-                <PurchaseCard/>
+                <PurchaseCard purchase_title={purchase_title} original_price={original_price} ticket_count={ticket_count} />
             </footer>
         </section>
     )

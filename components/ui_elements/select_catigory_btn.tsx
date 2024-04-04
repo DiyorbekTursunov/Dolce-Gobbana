@@ -1,5 +1,7 @@
-import { ReactNode } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import { Button } from "../ui/button";
+import { ticket_data_vip_pass } from "@/helpers/data/tickets_data";
+import { tickets_Type } from "@/types/types";
 
 type SelectCategoryBtnProps = {
     children: ReactNode;
