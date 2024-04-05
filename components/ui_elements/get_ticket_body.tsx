@@ -48,11 +48,6 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
         startup_pass_description,
         isFree
     }: any = TicketData()
-
-
-    useEffect(() => {
-        TicketData()
-    }, [ticketCount])
     
 
     return (

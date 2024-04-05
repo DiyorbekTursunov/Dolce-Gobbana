@@ -24,10 +24,13 @@ interface Ticket {
 export default function PurchaseCard({ purchase_title, original_price, ticket_count, name, TicketData }: purchaseTitleProps) {
     let tickets: any[] = [];
 
-    const ticketsData = localStorage.getItem("tickets_data");
-    if (ticketsData !== null) {
-        tickets = JSON.parse(ticketsData);
+    if (typeof localStorage !== 'undefined') {
+        const ticketsData = localStorage.getItem("tickets_data");
+        if (ticketsData !== null) {
+            tickets = JSON.parse(ticketsData);
+        }
     }
+
 
     function addToCardHandel() {
         const newTicket = TicketData();
@@ -41,7 +44,9 @@ export default function PurchaseCard({ purchase_title, original_price, ticket_co
 
     //Add to local storage
     function setTickets() {
-        localStorage.setItem("tickets_data", JSON.stringify(tickets));
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("tickets_data", JSON.stringify(tickets));
+        }
     }
     return (
         <div className="border-[1px] border-[#0000001A] rounded-[6px] px-6 py-[20px] w-[379px] max-sm:w-full">

@@ -59,9 +59,12 @@ export default function MyCard() {
 
     //set to local storege given value
     function setTicketsToStorage(value: tickets_Type[]) {
-        localStorage.setItem("tickets_data", JSON.stringify(value));
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem("tickets_data", JSON.stringify(value));
+        }
         setTickets(value);
     }
+
 
     return (
         <main className="max-w-[1240px] mx-auto mt-[62px] px-3">
