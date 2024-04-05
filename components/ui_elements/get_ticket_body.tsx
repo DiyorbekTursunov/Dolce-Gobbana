@@ -8,25 +8,29 @@ import plus_icon from '../images/svg/icons/icon_plus.svg'
 import minus_icon from '../images/svg/icons/icon_minus.svg'
 import PurchaseCard from "./purchase_card";
 import { ticket_data_general_attendees, ticket_data_press_pass, ticket_data_startup_pass, ticket_data_vip_pass } from "@/helpers/data/tickets_data";
+import { useEffect, useState } from "react";
 
 type GetTicketBodyProps = {
     SelectedButton: string;
 }
 
 export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
+    // ticket_count uchun holatni saqlash uchun state ni qo'shamiz
+    const [ticketCount, setTicketCount] = useState(1);
+
     //this function depending on the clicked button type return was suitable value
     function TicketData() {
         switch (SelectedButton) {
             case "VIP Pass":
-                return ticket_data_vip_pass
+                return { ...ticket_data_vip_pass, ticket_count: ticketCount }; // ticket_count ni qo'shib qaytarish
             case "General Attendees":
-                return ticket_data_general_attendees
+                return { ...ticket_data_general_attendees, ticket_count: ticketCount };
             case "Startup Pass":
-                return ticket_data_startup_pass
+                return { ...ticket_data_startup_pass, ticket_count: ticketCount };
             case "Press Pass":
-                return ticket_data_press_pass
+                return { ...ticket_data_press_pass, ticket_count: ticketCount };
             default:
-                ticket_data_vip_pass;
+                return { ...ticket_data_vip_pass, ticket_count: ticketCount };
         }
     }
 
@@ -45,12 +49,18 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
         isFree
     }: any = TicketData()
 
+
+    useEffect(() => {
+        TicketData()
+    }, [ticketCount])
+    
+
     return (
         <section className="mb-[77px]">
             {/*Section Header start */}
             <header className="flex md:flex-row sm:flex-col max-sm:flex-col  gap-12 mb-[40px]">
                 <div className="flex justify-evenly">
-                    <Image src={image} alt="Ticket image" className="max-w-[260px] h-[378.06px]" />
+                    <Image src={image} alt="Ticket image" className="max-w-[260px] h-[378.06px]" priority />
                     <div className="md:hidden sm:block max-sm:hidden">
                         <h2 className="text-[32px] font-semibold mb-4">{name}</h2>
                         {isFree && isFree ?
@@ -66,12 +76,12 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                                 </span>
                             </div>}
                         <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4 mt-4">
-                            <Button variant={"link"}>
+                            <Button variant={"link"}onClick={() => setTicketCount(ticketCount <= 10 ? ticketCount + 1 : ticketCount)}>
                                 <Image src={plus_icon} alt="plus icon" />
                             </Button>
                             <span>{ticket_count}</span>
                             <Button variant={"link"}>
-                                <Image src={minus_icon} alt="minus icon" />
+                                <Image src={minus_icon} alt="minus icon"  onClick={() => setTicketCount(ticketCount >= 1 ? ticketCount - 1 : ticketCount)}/>
                             </Button>
                         </div>
                     </div>
@@ -139,7 +149,7 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                         ))}
                     </ul>
                 </div>
-                <PurchaseCard purchase_title={purchase_title} original_price={original_price} ticket_count={ticket_count} />
+                <PurchaseCard purchase_title={purchase_title} name={name} original_price={original_price} ticket_count={ticket_count} TicketData={TicketData} />
             </footer>
             {/*Section Footer and */}
         </section>
