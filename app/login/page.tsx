@@ -15,7 +15,7 @@ export default function Login() {
             <div className='flex md:flex-row sm:flex-col md:items-start sm:items-center max-sm:items-center max-sm:flex-col gap-[40px]'>
                 <section>
                     <form className='max-w-[685px]'>
-                        <p className='mb-6'>Don't have an account? <Link href={"/register"} className='text-primary font-semibold underline-offset-4 underline'>Sing Up</Link></p>
+                        <p className='mb-6'>Don&apos;t have an account? <Link href={"/register"} className='text-primary font-semibold underline-offset-4 underline'>Sing Up</Link></p>
                         <ProfileForm loginType={"login"}/>
                         <p className='mt-6'>I agree that Netevia may collect, process, share, and use my personal information (e.g. name, email address, etc.) provided by me to create my account and purchase services or products offered by Netevia and its partners. I understand that my personal information will be processed by Netevia in the United States in accordance with the Netevia Privacy Policy.</p>
                         <div className="flex items-center space-x-2 mt-[33px]">
