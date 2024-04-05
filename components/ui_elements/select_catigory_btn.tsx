@@ -5,17 +5,18 @@ import { tickets_Type } from "@/types/types";
 
 type SelectCategoryBtnProps = {
     children: ReactNode;
-    isSelected: boolean
-    SelectedClickedHandel: Function
+    isSelected: boolean;
+    SelectedClickedHandel: Function;
+    SelectedButton: string
 }
 
-function SelectCategoryBtn({ children, isSelected, SelectedClickedHandel }: SelectCategoryBtnProps): JSX.Element {
+function SelectCategoryBtn({ children, isSelected, SelectedClickedHandel, SelectedButton}: SelectCategoryBtnProps): JSX.Element {
 
     // if you click button changa this button border to gradient
     function changeBorder() {
-        switch (children) {
+        switch (SelectedButton) {
             case "VIP Pass":
-                return "from-cyan-500 to-blue-500"
+                return "from-cyan-500 to-blue-500" 
                     case "General Attendees":
                         return "from-fuchsia-600 to-pink-600"
                             case "Startup Pass":
@@ -25,7 +26,7 @@ function SelectCategoryBtn({ children, isSelected, SelectedClickedHandel }: Sele
                                             default:
                                                 return "from-cyan-500 to-blue-500"
     }}
-
+    
 
     return (
         <div className={isSelected ? `bg-gradient-to-r ${changeBorder()} inline-block p-[4px] rounded-[33px]` : 'border-[2px] border-black rounded-[33px]'}>

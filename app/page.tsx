@@ -20,10 +20,9 @@ export default function Home() {
   function SelectedClickedHandel(title: string) {
     setSelectedButton(title)
     const updatedBtnValue = selectCategoryBtnValue.map(btn => {
-      btn.isSelected = false
       return ({
         ...btn,
-        isSelected: btn.title === title ? true : btn.isSelected
+        isSelected: btn.title === title ? true : false
       })
     });
     setSelectCategoryBtnValue(updatedBtnValue);
@@ -41,7 +40,8 @@ export default function Home() {
             <SelectCategoryBtn
               key={values.id}
               SelectedClickedHandel={SelectedClickedHandel}
-              isSelected={values.isSelected}>
+              isSelected={values.isSelected}
+              SelectedButton={SelectedButton}              >
               {values.title}
             </SelectCategoryBtn>)}
         </div>

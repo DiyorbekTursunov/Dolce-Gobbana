@@ -22,7 +22,7 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
     function TicketData() {
         switch (SelectedButton) {
             case "VIP Pass":
-                return { ...ticket_data_vip_pass, ticket_count: ticketCount }; // ticket_count ni qo'shib qaytarish
+                return { ...ticket_data_vip_pass, ticket_count: ticketCount };
             case "General Attendees":
                 return { ...ticket_data_general_attendees, ticket_count: ticketCount };
             case "Startup Pass":
@@ -76,10 +76,10 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                                 </span>
                             </div>}
                         <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4 mt-4">
-                            <Button variant={"link"}onClick={() => setTicketCount(ticketCount <= 10 ? ticketCount + 1 : ticketCount)}>
+                            <Button variant={"link"} onClick={() => setTicketCount(ticketCount <= 10 ? ticketCount + 1 : ticketCount)}>
                                 <Image src={plus_icon} alt="plus icon" />
                             </Button>
-                            <span>{ticket_count}</span>
+                            <span>{ticketCount}</span>
                             <Button variant={"link"}>
                                 <Image src={minus_icon} alt="minus icon"  onClick={() => setTicketCount(ticketCount >= 1 ? ticketCount - 1 : ticketCount)}/>
                             </Button>
@@ -102,11 +102,11 @@ export default function GetTicketBody({ SelectedButton }: GetTicketBodyProps) {
                                 </span>
                             </div>}
                         <div className="flex bg-[#F0F0F0] px-[20px] py-[10px] gap-[38px] w-[170px] mb-4 mt-4">
-                            <Button variant={"link"}>
+                            <Button variant={"link"} onClick={() => setTicketCount(ticketCount < 10 ? ticketCount + 1 : ticketCount)}>
                                 <Image src={plus_icon} alt="plus icon" />
                             </Button>
                             <span>{ticket_count}</span>
-                            <Button variant={"link"}>
+                            <Button variant={"link"}  onClick={() => setTicketCount(ticketCount > 1 ? ticketCount - 1 : ticketCount)}>
                                 <Image src={minus_icon} alt="minus icon" />
                             </Button>
                         </div>

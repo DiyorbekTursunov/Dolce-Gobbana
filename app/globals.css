@@ -83,6 +83,11 @@
   .footertext-icon::after {
     background-image: url(../components/images/svg/icons/footer_text_icon.png); 
   }
+  .removeLastChild:last-child{
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html{

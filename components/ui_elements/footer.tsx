@@ -14,9 +14,9 @@ export default function Footer() {
     <footer className="w-full lg:h-[468px] md:h-[668px] sm:h-[668px] footer-bg bg-cover bg-no-repeat">
       <div className="max-w-[1240px] mx-auto pt-[80px] pb-[60px] px-3 max-sm:px-6">
         <div className='flex lg:flex-row md:flex-col justify-between max-md:flex-col lg:gap-0 md:gap-[46px] max-md:gap-[46px] mb-[80px]'>
-          <div className="text-[60px] text-[#fff] uppercase flex flex-col leading-[78.12px] font-semibold">
+          <div className="text-[60px] max-sm:text-[45px] text-[#fff] uppercase flex flex-col leading-[78.12px] font-semibold">
             <span>Save</span>
-            <span className={`after:content-[""] footertext-icon after:w-[302px] after:h-[82px] after:z-0 after:bg-no-repeat after:absolute after:left-9 relative`}>the date</span>
+            <span className={`after:content-[""] footertext-icon after:w-[302px] max-sm:after:w-[250px] after:max-sm:left-3 after:bg-right after:h-[82px] after:z-0 after:bg-no-repeat after:absolute after:left-9 relative`}>the date</span>
           </div>
           <div className='text-[#fff] uppercase lg:w-[660px] md:max-w-full flex flex-col justify-end'>
             <div className='flex justify-between mb-8 border-b-[2px] border-b-[#D9D9D9] items-end'>
