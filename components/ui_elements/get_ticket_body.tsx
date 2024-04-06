@@ -8,7 +8,7 @@ import plus_icon from '../images/svg/icons/icon_plus.svg'
 import minus_icon from '../images/svg/icons/icon_minus.svg'
 import PurchaseCard from "./purchase_card";
 import { ticket_data_general_attendees, ticket_data_press_pass, ticket_data_startup_pass, ticket_data_vip_pass } from "@/helpers/data/tickets_data";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type GetTicketBodyProps = {
     SelectedButton: string;

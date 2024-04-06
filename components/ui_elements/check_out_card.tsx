@@ -6,7 +6,6 @@ import Image from "next/image";
 import icon_card from '../images/svg/icons/shop_bag.svg'
 import arrow_right_icon from '../images/svg/icons/arrow_right.svg'
 import { useRouter } from "next/navigation";
-import { tickets_Type } from "@/types/types";
 
 interface purchaseTitleProps {
     purchase_title: string,
@@ -28,22 +27,6 @@ export default function CheckOutCard({ tickets }: { tickets: purchaseTitleProps[
         tickets.forEach(ticket => total_price += ticket.original_price * ticket.ticket_count);
         return total_price;
     }
-
-
-    const newTickets = tickets.map((e: purchaseTitleProps) => {
-        const newTicket = {
-            name: e.name,
-            original_price: e.original_price,
-            ticket_count: e.ticket_count,
-            discounted_price: e.discounted_price,
-            discount: e.discount,
-        }
-        return newTicket
-    })
-
-
-
-
 
 
     return (
