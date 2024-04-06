@@ -118,7 +118,7 @@ export default function CheckOut() {
                     </div>
                 </section>
             </div>
-            <div className='w-full border-[1px] border-[#0000001A] rounded-[6px] p-6'>
+            <div className='w-full border-[1px] border-[#0000001A] rounded-[6px] p-6 mb-6'>
                 <div className='flex justify-between'>
                     <h2 className='text-[24px] font-semibold'>Terms and conditions</h2>
                     <Button onClick={() => setdescrIsOpen(!descrIsOpen)}>
