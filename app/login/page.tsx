@@ -1,3 +1,5 @@
+"use client"
+
 //components
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -7,8 +9,10 @@ import Link from 'next/link'
 import icon_passport from '@/components/images/svg/icons/passpord.svg'
 import icon_screen from '@/components/images/svg/icons/screen_map.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
+    const router = useRouter()
     return (
         <main className='max-w-[1240px] mx-auto mt-[62px] mb-[94px] px-3'>
             <h1 className='text-[32px] max-sm:text-[24px] font-semibold uppercase mb-[32px]'>Login</h1>
@@ -16,7 +20,7 @@ export default function Login() {
                 <section>
                     <form className='max-w-[685px]'>
                         <p className='mb-6'>Don&apos;t have an account? <Link href={"/register"} className='text-primary font-semibold underline-offset-4 underline'>Sing Up</Link></p>
-                        <ProfileForm loginType={"login"}/>
+                        <ProfileForm loginType={"login"} />
                         <p className='mt-6'>I agree that Netevia may collect, process, share, and use my personal information (e.g. name, email address, etc.) provided by me to create my account and purchase services or products offered by Netevia and its partners. I understand that my personal information will be processed by Netevia in the United States in accordance with the Netevia Privacy Policy.</p>
                         <div className="flex items-center space-x-2 mt-[33px]">
                             <Checkbox id="terms" />
@@ -28,7 +32,7 @@ export default function Login() {
                             </label>
                         </div>
                         <div className='flex gap-6 mt-6'>
-                            <Button variant={"outline_dark"} className='w-full py-[20px]'>
+                            <Button variant={"outline_dark"} className='w-full py-[20px]' onClick={() => router.push("/")}>
                                 Cancel
                             </Button>
                             <Button variant={"default"} className='w-full py-[20px] flex gap-[15px]'>
@@ -39,9 +43,6 @@ export default function Login() {
                             </Button>
                         </div>
                     </form>
-                    <div>
-
-                    </div>
                 </section>
                 <section className='max-w-[356px] bg-[#EFF6FF] py-[20px] p-6 rounded-[6px] h-full mt-[45px] max-sm:w-full'>
                     <ul className='flex flex-col gap-6'>

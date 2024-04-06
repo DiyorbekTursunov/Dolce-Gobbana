@@ -1,15 +1,19 @@
+"use client"
 //components
 import { Button } from "../ui/button";
 import Image from "next/image";
 //images
 import icon_card from '../images/svg/icons/shop_bag.svg'
 import arrow_right_icon from '../images/svg/icons/arrow_right.svg'
+import { useRouter } from "next/navigation";
 import { tickets_Type } from "@/types/types";
 
 interface purchaseTitleProps {
     purchase_title: string,
     original_price: number
     ticket_count: number,
+    discounted_price: number,
+    discount: string,
     name: string,
 }
 
@@ -17,12 +21,28 @@ interface purchaseTitleProps {
 
 
 export default function CheckOutCard({ tickets }: { tickets: purchaseTitleProps[] }) {
+    const router = useRouter()
 
     function getTotalPrice() {
         let total_price = 0;
         tickets.forEach(ticket => total_price += ticket.original_price * ticket.ticket_count);
         return total_price;
     }
+
+
+    const newTickets = tickets.map((e: purchaseTitleProps) => {
+        const newTicket = {
+            name: e.name,
+            original_price: e.original_price,
+            ticket_count: e.ticket_count,
+            discounted_price: e.discounted_price,
+            discount: e.discount,
+        }
+        return newTicket
+    })
+
+
+
 
 
 
@@ -43,15 +63,11 @@ export default function CheckOutCard({ tickets }: { tickets: purchaseTitleProps[
                 <span className="text-[24px] font-semibold">${getTotalPrice()}</span>
             </div>
             <div className="flex flex-col gap-6">
-                {true ? <Button variant={"default"} className={`py-[20px] gap-[15px] `} onClick={() => ""}>
+                <Button variant={"default"} className={`py-[20px] gap-[15px] `} onClick={() => router.push(`/check_out/`)}>
                     <Image src={icon_card} alt="Shop card icon" />
                     Sign In and Checkout
-                </Button> :
-                    <Button variant={"default"} className={`py-[20px] gap-[15px] `} onClick={() => ""}>
-                        <Image src={icon_card} alt="Shop card icon" />
-                        Checkout
-                    </Button>}
-                <Button variant={"outline_dark"} className="py-[20px] gap-[15px]" >
+                </Button>
+                <Button variant={"outline_dark"} className="py-[20px] gap-[15px]" onClick={() => router.push(`/check_out/`)}>
                     Checkout as a guest
                     <Image src={arrow_right_icon} alt="Arrow right icon" />
                 </Button>

@@ -1,3 +1,4 @@
+"use client"
 //components
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -7,8 +8,11 @@ import Link from 'next/link'
 import icon_passport from '@/components/images/svg/icons/passpord.svg'
 import icon_screen from '@/components/images/svg/icons/screen_map.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 export default function Register() {
+    const router = useRouter()
+
     return (
         <main className='max-w-[1240px] mx-auto mt-[62px] mb-[94px] px-3'>
             <h1 className='text-[32px] max-sm:text-[24px] font-semibold uppercase mb-[32px]'>Create an account</h1>
@@ -28,7 +32,7 @@ export default function Register() {
                             </label>
                         </div>
                         <div className='flex gap-6 mt-6'>
-                            <Button variant={"outline_dark"} className='w-full py-[20px]'>
+                            <Button variant={"outline_dark"} className='w-full py-[20px]' onClick={() => router.push("/")}>
                                 Cancel
                             </Button>
                             <Button variant={"default"} className='w-full py-[20px] flex gap-[15px]'>
